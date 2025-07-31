@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx60suvwh8qnp"]
+[gd_scene load_steps=6 format=3 uid="uid://cx60suvwh8qnp"]
 
 [ext_resource type="Texture2D" uid="uid://b8xmxaoimr773" path="res://Enjl-Starry Space Background/background_1.png" id="1_2pwms"]
+[ext_resource type="Script" uid="uid://crstr3dnkuif1" path="res://parallax_resizer.gd" id="1_xoild"]
 [ext_resource type="Texture2D" uid="uid://dmiou4dcf86n7" path="res://Enjl-Starry Space Background/background_2.png" id="2_xoild"]
 [ext_resource type="Texture2D" uid="uid://ca1yoiaenbuy3" path="res://Enjl-Starry Space Background/background_3.png" id="3_kwhg4"]
 [ext_resource type="Texture2D" uid="uid://b8gwjk256ktbd" path="res://Enjl-Starry Space Background/background_4.png" id="4_hy12d"]
@@ -9,6 +10,8 @@
 follow_viewport_enabled = true
 scroll_limit_begin = Vector2(-1e+06, -1e+06)
 scroll_limit_end = Vector2(1e+06, 1e+06)
+scroll_ignore_camera_zoom = true
+script = ExtResource("1_xoild")
 
 [node name="ParallaxLayer_Distant" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.1, 0.1)
@@ -19,7 +22,7 @@ texture_repeat = 2
 texture = ExtResource("1_2pwms")
 centered = false
 region_enabled = true
-region_rect = Rect2(-512, -448, 1024, 896)
+region_rect = Rect2(0, 0, 1024, 896)
 
 [node name="ParallaxLayer_Mid" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.3, 0.3)
@@ -30,7 +33,7 @@ texture_repeat = 2
 texture = ExtResource("2_xoild")
 centered = false
 region_enabled = true
-region_rect = Rect2(-512, -448, 1024, 896)
+region_rect = Rect2(0, 0, 1024, 896)
 
 [node name="ParallaxLayer_Close" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.6, 0.6)
@@ -41,9 +44,10 @@ texture_repeat = 2
 texture = ExtResource("3_kwhg4")
 centered = false
 region_enabled = true
-region_rect = Rect2(-512, -448, 1024, 896)
+region_rect = Rect2(0, 0, 1024, 896)
 
 [node name="ParallaxLayer_Foreground" type="ParallaxLayer" parent="."]
+texture_repeat = 2
 motion_scale = Vector2(0.9, 0.9)
 motion_mirroring = Vector2(256, 224)
 
@@ -52,4 +56,4 @@ texture_repeat = 2
 texture = ExtResource("4_hy12d")
 centered = false
 region_enabled = true
-region_rect = Rect2(-512, -448, 1024, 896)
+region_rect = Rect2(0, 0, 1024, 896)

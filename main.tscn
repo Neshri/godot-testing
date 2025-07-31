@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjow6644f4t7s"]
+[gd_scene load_steps=5 format=3 uid="uid://cjow6644f4t7s"]
 
 [ext_resource type="PackedScene" uid="uid://delfo4sj40jv5" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://7stbb8vwkrg6" path="res://celestial_body.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cx60suvwh8qnp" path="res://parallax_background.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c16ymda0voas2" path="res://static_wall.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node2D"]
 
@@ -29,3 +30,18 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_h2yge")]
+follow_viewport_enabled = false
+
+[node name="StaticWall" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(-573, -346)
+
+[node name="StaticWall2" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(-574, 1147)
+
+[node name="StaticWall3" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(-460, -576)
+rotation = 1.57199
+
+[node name="StaticWall4" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(2040, -584)
+rotation = 1.5713
