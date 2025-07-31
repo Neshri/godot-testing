@@ -5,13 +5,13 @@ extends Area2D
 #==============================================================================
 
 @export_group("Orbit Configuration")
-@export var mass: float = 2.5
-@export var orbit_speed: float = 2.5 # NOTE: This is now radians/sec for rotation
-@export var orbit_distance: float = 75.0
-@export var orbit_smoothing_speed: float = 15.0
+@export var mass: float = 1
+@export var base_orbit_speed: float = 5 
+@export var orbit_distance: float = 150.0
 
 @export_group("Mechanics")
-@export var elongation_factor: float = 0.5
+@export var stretch_factor: float = 0.75
+@export var stretch_smoothing_speed: float = 8.0
 @export var hit_impulse_factor: float = 1.0
 
 
@@ -20,10 +20,10 @@ extends Area2D
 #==============================================================================
 
 var target: RigidBody2D
-# We now use a persistent angle for stable rotation.
 var _current_angle: float = 0.0
 var _current_velocity: Vector2 = Vector2.ZERO
 var _last_position: Vector2 = Vector2.ZERO
+var _smoothed_target_velocity: Vector2 = Vector2.ZERO
 
 
 #==============================================================================
@@ -41,26 +41,36 @@ func _physics_process(delta):
 	if not is_instance_valid(target):
 		return
 
-	# --- STABLE ORBIT FIX ---
-	# 1. Increment our angle. This is a stable, predictable change.
-	_current_angle += orbit_speed * delta
-
-	# 2. Calculate the ideal relative position based ONLY on the angle and distance.
-	var ideal_distance = orbit_distance
-	if target.linear_velocity.length_squared() > 1:
-		var velocity_dir = target.linear_velocity.normalized()
-		# We now calculate direction from the stable angle, not the jittery position.
-		var orbit_direction = Vector2.from_angle(_current_angle)
-		var alignment = abs(velocity_dir.dot(orbit_direction))
-		ideal_distance += orbit_distance * elongation_factor * alignment
+	# --- STABLE POSITIONING LOGIC ---
+	_smoothed_target_velocity = _smoothed_target_velocity.lerp(target.linear_velocity, stretch_smoothing_speed * delta)
 	
-	# This calculation is now free of any feedback loops.
-	var ideal_position = Vector2.from_angle(_current_angle) * ideal_distance
+	var base_circular_pos = Vector2.from_angle(_current_angle) * orbit_distance
+	var stretch_vector = Vector2.ZERO
+	if _smoothed_target_velocity.length_squared() > 1:
+		var speed = _smoothed_target_velocity.length()
+		var direction = _smoothed_target_velocity.normalized() * -1
+		var stretch_magnitude = remap(speed, 0, target.max_speed, 0, orbit_distance * stretch_factor)
+		stretch_vector = direction * stretch_magnitude
+	
+	var alignment = max(0, base_circular_pos.normalized().dot(stretch_vector.normalized()))
+	var final_position = base_circular_pos + (stretch_vector * alignment)
+	
+	self.position = final_position
 
-	# 3. Lerp to the ideal position to maintain smoothness.
-	self.position = self.position.lerp(ideal_position, orbit_smoothing_speed * delta)
+	# --- DIRECT PROPORTIONAL SPEED CALCULATION (Your Instruction) ---
+	# 1. Get the orbital's current distance from its center.
+	var current_distance = self.position.length()
+	# Safety check to prevent division by zero if orbit_distance is 0.
+	if orbit_distance < 0.01:
+		orbit_distance = 0.01
 
-	# 4. The velocity calculation will now be stable because the position is stable.
+	# 2. Calculate the speed modifier. It is now DIRECTLY proportional.
+	var speed_modifier = orbit_distance / current_distance
+	
+	# 3. Apply the modifier to the angle update.
+	_current_angle += base_orbit_speed * speed_modifier * delta
+
+	# --- VELOCITY CALCULATION ---
 	_current_velocity = (self.global_position - _last_position) / delta
 	_last_position = self.global_position
 
@@ -69,7 +79,7 @@ func _on_body_entered(body: Node2D):
 	if not body is RigidBody2D or body == target:
 		return
 	
-	var relative_velocity = _current_velocity - target.linear_velocity
+	var relative_velocity = _current_velocity - _smoothed_target_velocity
 	var impulse = relative_velocity * self.mass * hit_impulse_factor
 	body.apply_central_impulse(impulse)
 

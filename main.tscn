@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjow6644f4t7s"]
+[gd_scene load_steps=4 format=3 uid="uid://cjow6644f4t7s"]
 
 [ext_resource type="PackedScene" uid="uid://delfo4sj40jv5" path="res://player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://7stbb8vwkrg6" path="res://celestial_body.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cx60suvwh8qnp" path="res://parallax_background.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D"]
 
@@ -24,4 +25,7 @@ offset_top = -31.0
 offset_right = 36.0
 offset_bottom = -8.0
 text = "TESTING"
-visible_ratio = -0.142857
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_h2yge")]

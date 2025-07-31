@@ -64,7 +64,7 @@ func _physics_process(delta):
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):
-		_clear_orbitals()
+		#_clear_orbitals()
 		_spawn_orbital(orbital_type_1, 0)
 		get_tree().get_root().set_input_as_handled()
 
