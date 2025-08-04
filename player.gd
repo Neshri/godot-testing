@@ -5,7 +5,7 @@ extends "res://celestial_body.gd"
 #==============================================================================
 
 @export_group("Player Control")
-@export var thrust_force: float = 1500.0
+@export var thrust_force: float = 1000000.0
 
 @export_group("Camera Control")
 @export var base_zoom: float = 1.0
