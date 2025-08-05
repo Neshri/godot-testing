@@ -1,3 +1,4 @@
+# player.gd (Complete & Simplified)
 extends "res://celestial_body.gd"
 
 #==============================================================================
@@ -13,20 +14,13 @@ extends "res://celestial_body.gd"
 @export var zoom_speed_threshold: float = 1000.0
 @export var zoom_smoothing_speed: float = 5.0
 
-@export_group("Orbital Management")
-@export var orbital_type_1: PackedScene
-@export var orbital_type_2: PackedScene
-
-
 #==============================================================================
 # --- NODE REFERENCES & PRIVATE VARIABLES ---
 #==============================================================================
 
 @onready var camera: Camera2D = $Camera2D
 @onready var speed_label: Label = get_node("/root/Main/CanvasLayer/SpeedometerLabel")
-
-var active_orbitals: Array[Node] = []
-
+@onready var orbital_belt: Node = $OrbitalBelt
 
 #==============================================================================
 # --- BUILT-IN GODOT FUNCTIONS ---
@@ -34,24 +28,24 @@ var active_orbitals: Array[Node] = []
 
 func _ready():
 	super()
+	add_to_group("player")
+	
 	if not is_instance_valid(speed_label):
 		print("DIAGNOSTIC: SpeedometerLabel node was NOT found.")
 	else:
 		print("DIAGNOSTIC: SpeedometerLabel node found successfully.")
+	
+	if not is_instance_valid(orbital_belt):
+		push_error("Player ERROR: Child node 'OrbitalBelt' not found!")
 
 
-func _physics_process(delta):
-	# We call super() to run the gravity and new speed cap logic first.
+func _physics_process(delta: float):
 	super(delta)
 	
-	# Apply player thrust
 	var input_direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if input_direction != Vector2.ZERO:
 		apply_central_force(input_direction * thrust_force)
 
-	# The speed cap logic has been REMOVED from here and moved to celestial_body.gd
-
-	# Update camera and speedometer
 	var current_speed := linear_velocity.length()
 	if is_instance_valid(speed_label):
 		speed_label.text = "Speed: " + str(int(current_speed))
@@ -62,28 +56,24 @@ func _physics_process(delta):
 	camera.zoom = camera.zoom.lerp(target_zoom_vector, zoom_smoothing_speed * delta)
 
 
+# --- REVISED INPUT HANDLING ---
+# Simplified to two actions: add and remove.
 func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed("ui_accept"):
-		#_clear_orbitals()
-		_spawn_orbital(orbital_type_1, 0)
-		get_tree().get_root().set_input_as_handled()
-
-
-#==============================================================================
-# --- CUSTOM HELPER FUNCTIONS ---
-#==============================================================================
-
-func _clear_orbitals():
-	for orbital in active_orbitals:
-		if is_instance_valid(orbital):
-			orbital.queue_free()
-	active_orbitals.clear()
-
-func _spawn_orbital(orbital_blueprint: PackedScene, start_angle: float):
-	if orbital_blueprint == null:
-		print("Cannot spawn orbital: No scene assigned in the Inspector.")
+	if not event is InputEventKey:
 		return
-	var new_orbital = orbital_blueprint.instantiate()
-	add_child(new_orbital)
-	new_orbital.initialize(start_angle)
-	active_orbitals.append(new_orbital)
+
+	if event.pressed and not event.is_echo():
+		
+		match event.keycode:
+			
+			# Press E to add an orbital.
+			KEY_E:
+				if is_instance_valid(orbital_belt):
+					orbital_belt.add_orbital()
+				get_tree().get_root().set_input_as_handled()
+
+			# Press Q to remove an orbital.
+			KEY_Q:
+				if is_instance_valid(orbital_belt):
+					orbital_belt.remove_orbital()
+				get_tree().get_root().set_input_as_handled()

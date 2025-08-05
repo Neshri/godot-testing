@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3wc5oxr7cbec"]
+
+[ext_resource type="Script" uid="uid://bktmiogxm458l" path="res://orbital_belt.gd" id="1_i5jyk"]
+[ext_resource type="Script" uid="uid://c0a72t5yyyat1" path="res://orbital_layer.gd" id="2_f0x1a"]
+[ext_resource type="PackedScene" uid="uid://c4saafepeac37" path="res://orbital.tscn" id="3_2vg57"]
+
+[sub_resource type="Resource" id="Resource_2vg57"]
+script = ExtResource("2_f0x1a")
+orbital_scene = ExtResource("3_2vg57")
+orbit_distance = 75.0
+base_orbit_speed = 5.0
+metadata/_custom_type_script = "uid://c0a72t5yyyat1"
+
+[sub_resource type="Resource" id="Resource_8qjo1"]
+script = ExtResource("2_f0x1a")
+orbital_scene = ExtResource("3_2vg57")
+orbit_distance = 150.0
+base_orbit_speed = 3.5
+metadata/_custom_type_script = "uid://c0a72t5yyyat1"
+
+[sub_resource type="Resource" id="Resource_qiaco"]
+script = ExtResource("2_f0x1a")
+orbital_scene = ExtResource("3_2vg57")
+orbit_distance = 225.0
+base_orbit_speed = 2.5
+metadata/_custom_type_script = "uid://c0a72t5yyyat1"
+
+[node name="OrbitalBelt" type="Node2D"]
+script = ExtResource("1_i5jyk")
+layers = Array[ExtResource("2_f0x1a")]([SubResource("Resource_2vg57"), SubResource("Resource_8qjo1"), SubResource("Resource_qiaco")])

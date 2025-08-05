@@ -9,8 +9,6 @@ radius = 15.0
 [node name="Orbital" type="Area2D"]
 script = ExtResource("1_aa6px")
 mass = 100.0
-orbit_distance = 75.0
-stretch_factor = 0.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1s0sj")
