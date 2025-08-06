@@ -44,7 +44,7 @@ position = Vector2(-460, -576)
 rotation = 1.57199
 
 [node name="StaticWall4" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(2040, -584)
+position = Vector2(2200, -584)
 rotation = 1.5713
 
 [node name="SeekerEnemy" parent="." instance=ExtResource("5_lquwl")]
