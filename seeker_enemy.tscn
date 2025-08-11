@@ -4,14 +4,17 @@
 [ext_resource type="Script" uid="uid://cchibugmp202j" path="res://seeker_enemy.gd" id="2_unis6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_unis6"]
-radius = 877.128
+radius = 593.008
 
 [node name="SeekerEnemy" type="Node2D"]
 script = ExtResource("2_unis6")
 
 [node name="CelestialBody" parent="." instance=ExtResource("1_04wi5")]
+collision_layer = 8
 
 [node name="DetectionArea" type="Area2D" parent="CelestialBody"]
+collision_layer = 8
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CelestialBody/DetectionArea"]
 shape = SubResource("CircleShape2D_unis6")

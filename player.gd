@@ -20,7 +20,7 @@ extends "res://celestial_body.gd"
 
 @onready var camera: Camera2D = $Camera2D
 @onready var speed_label: Label = get_node("/root/Main/CanvasLayer/SpeedometerLabel")
-@onready var orbital_belt: Node = $OrbitalBelt
+#@onready var orbital_belt: Node = $OrbitalBelt
 
 #==============================================================================
 # --- BUILT-IN GODOT FUNCTIONS ---
@@ -35,8 +35,8 @@ func _ready():
 	else:
 		print("DIAGNOSTIC: SpeedometerLabel node found successfully.")
 	
-	if not is_instance_valid(orbital_belt):
-		push_error("Player ERROR: Child node 'OrbitalBelt' not found!")
+	#if not is_instance_valid(orbital_belt):
+		#push_error("Player ERROR: Child node 'OrbitalBelt' not found!")
 
 
 func _physics_process(delta: float):
@@ -58,22 +58,22 @@ func _physics_process(delta: float):
 
 # --- REVISED INPUT HANDLING ---
 # Simplified to two actions: add and remove.
-func _unhandled_input(event: InputEvent):
-	if not event is InputEventKey:
-		return
-
-	if event.pressed and not event.is_echo():
-		
-		match event.keycode:
-			
-			# Press E to add an orbital.
-			KEY_E:
-				if is_instance_valid(orbital_belt):
-					orbital_belt.add_orbital()
-				get_tree().get_root().set_input_as_handled()
-
-			# Press Q to remove an orbital.
-			KEY_Q:
-				if is_instance_valid(orbital_belt):
-					orbital_belt.remove_orbital()
-				get_tree().get_root().set_input_as_handled()
+#func _unhandled_input(event: InputEvent):
+	#if not event is InputEventKey:
+		#return
+#
+	#if event.pressed and not event.is_echo():
+		#
+		#match event.keycode:
+			#
+			## Press E to add an orbital.
+			#KEY_E:
+				#if is_instance_valid(orbital_belt):
+					#orbital_belt.add_orbital()
+				#get_tree().get_root().set_input_as_handled()
+#
+			## Press Q to remove an orbital.
+			#KEY_Q:
+				#if is_instance_valid(orbital_belt):
+					#orbital_belt.remove_orbital()
+				#get_tree().get_root().set_input_as_handled()

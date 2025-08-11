@@ -14,14 +14,6 @@ var belt: Node # A reference to the belt that owns this orbital
 var _current_velocity: Vector2 = Vector2.ZERO
 var _last_position: Vector2 = Vector2.ZERO
 
-# --- REVISED: MINIMAL PHYSICS PROCESS ---
-func _physics_process(delta: float):
-	# The orbital's ONLY job in physics_process is to calculate its own
-	# velocity so it can apply a correct impulse when it hits something.
-	# It no longer controls its own position.
-	if delta > 0:
-		_current_velocity = (self.global_position - _last_position) / delta
-	_last_position = self.global_position
 
 func _on_body_entered(body: Node2D):
 	# This collision logic is still valid, but needs the belt's velocity.

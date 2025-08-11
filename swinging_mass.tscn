@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://0pf73s1276wb"]
+
+[ext_resource type="Script" uid="uid://yjuapp3718ug" path="res://custom_spring_mass.gd" id="1_7unch"]
+[ext_resource type="Script" uid="uid://bv05yvc5vycgx" path="res://visuals.gd" id="2_k3ud8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k3ud8"]
+friction = 0.5
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3ud8"]
+radius = 20.0
+
+[node name="CustomSpringMass" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 13
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_k3ud8")
+script = ExtResource("1_7unch")
+rest_length = 40.0
+stiffness = 500.0
+max_length = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k3ud8")
+
+[node name="Visuals" type="Node2D" parent="."]
+script = ExtResource("2_k3ud8")
+radius = 20.0
+color = Color(0.283771, 0.792735, 0, 1)

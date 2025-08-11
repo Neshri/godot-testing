@@ -11,6 +11,7 @@ bounce = 1.0
 radius = 30.0167
 
 [node name="CelestialBody" type="RigidBody2D"]
+collision_mask = 15
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_pbhp0")
 script = ExtResource("1_pbhp0")
@@ -20,4 +21,4 @@ shape = SubResource("CircleShape2D_un7c2")
 
 [node name="Visuals" type="Node2D" parent="."]
 script = ExtResource("1_vuvvy")
-color = Color(0.955982, 0, 0.340177, 1)
+color = Color(0.989658, 0.831386, 0.160547, 1)

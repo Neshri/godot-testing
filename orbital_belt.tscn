@@ -7,29 +7,29 @@
 
 [sub_resource type="Resource" id="Resource_ws3wh"]
 script = ExtResource("2_8qjo1")
-stiffness = 20.0
-damping = 1.5
+stiffness = 10.0
+damping = 2.5
 metadata/_custom_type_script = "uid://cqitunurms1dd"
 
 [sub_resource type="Resource" id="Resource_2vg57"]
 script = ExtResource("2_f0x1a")
 orbital_scene = ExtResource("3_2vg57")
 orbit_distance = 75.0
-base_orbit_speed = 5.0
+base_orbit_speed = 3.0
 metadata/_custom_type_script = "uid://c0a72t5yyyat1"
 
 [sub_resource type="Resource" id="Resource_8qjo1"]
 script = ExtResource("2_f0x1a")
 orbital_scene = ExtResource("3_2vg57")
 orbit_distance = 150.0
-base_orbit_speed = 3.5
+base_orbit_speed = 2.0
 metadata/_custom_type_script = "uid://c0a72t5yyyat1"
 
 [sub_resource type="Resource" id="Resource_qiaco"]
 script = ExtResource("2_f0x1a")
 orbital_scene = ExtResource("3_2vg57")
 orbit_distance = 225.0
-base_orbit_speed = 2.5
+base_orbit_speed = 1.0
 metadata/_custom_type_script = "uid://c0a72t5yyyat1"
 
 [node name="OrbitalBelt" type="Node2D"]

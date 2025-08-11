@@ -49,3 +49,9 @@ rotation = 1.5713
 
 [node name="SeekerEnemy" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(-167, 252)
+
+[node name="SeekerEnemy2" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(265, 816)
+
+[node name="SeekerEnemy3" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(662, 66)
