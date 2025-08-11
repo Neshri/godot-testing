@@ -18,7 +18,11 @@ collision_layer = 2
 collision_mask = 11
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_i3pqv")
+contact_monitor = true
+max_contacts_reported = 3
 script = ExtResource("1_onrkg")
+health = 1000.0
+damage_threshold_mass_factor = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_onrkg")

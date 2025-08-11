@@ -13,12 +13,14 @@ radius = 20.0
 [node name="CustomSpringMass" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 13
-mass = 100.0
+mass = 500.0
 physics_material_override = SubResource("PhysicsMaterial_k3ud8")
+contact_monitor = true
+max_contacts_reported = 3
 script = ExtResource("1_7unch")
-rest_length = 40.0
-stiffness = 500.0
-max_length = 200.0
+stiffness = 2500.0
+damping = 50.0
+max_length_stiffness = 10000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_k3ud8")
