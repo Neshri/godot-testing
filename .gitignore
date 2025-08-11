@@ -1,10 +1,56 @@
-# Godot 4+ specific ignores
+# --- Godot 4 Engine ---
+# This directory contains user-specific import data, caches, and metadata.
+# It should ALWAYS be ignored.
 .godot/
-/android/
-.vscode/
-addons/
+
+
+# --- Godot General ---
+# These files store your local export configurations.
 export_presets.cfg
+
+# Compiled translation files. The source .po files should be committed instead.
 *.translation
 
-# Mac
+# UID cache files created next to GDScript files.
+*.gd.uid
+
+# If you use the Godot Android build template, this should be ignored.
+# It contains a whole separate Godot project.
+/android/
+
+# --- IMPORTANT: Addons ---
+# Ignoring the entire addons folder is common if all your addons are from the
+# Asset Library and can be easily re-downloaded.
+#
+# However, if you have modified any addons or have custom addons that are
+# part of your project's source code, you MUST commit them.
+# In that case, you should DELETE or comment out the line below.
+# addons/
+
+
+# --- Editor & OS Specific ---
+# User-specific settings for Visual Studio Code.
+.vscode/
+
+# macOS-specific folder attributes.
 .DS_Store
+
+# Linux-specific folder metadata.
+.directory
+
+
+# --- Common Temporary Files ---
+# These are temporary files created during save operations.
+*.tmp
+
+# Common backup file extensions.
+*.bak
+*.old
+
+
+# --- Mono / C# Specific ---
+# These should be ignored if you are using C# for scripting.
+# They are harmless to include even if you aren't.
+.mono/
+bin/
+obj/
