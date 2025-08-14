@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://gwk0doh78ncu"]
+
+[ext_resource type="Script" uid="uid://br0ji5s7ptbu7" path="res://spawner.gd" id="1_656a2"]
+[ext_resource type="PackedScene" uid="uid://cqurmahm50fml" path="res://seeker_enemy.tscn" id="2_emrql"]
+
+[node name="SeekerSpawner" type="Node2D"]
+script = ExtResource("1_656a2")
+scene_to_spawn = ExtResource("2_emrql")
+max_enemies = 3
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="SpawnPosition" type="Marker2D" parent="."]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

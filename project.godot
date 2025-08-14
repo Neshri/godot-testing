@@ -15,6 +15,11 @@ run/main_scene="uid://cjow6644f4t7s"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_height=758
+window/stretch/mode="canvas_items"
+
 [layer_names]
 
 2d_physics/layer_1="world"

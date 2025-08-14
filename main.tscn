@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://7stbb8vwkrg6" path="res://celestial_body.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cx60suvwh8qnp" path="res://parallax_background.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c16ymda0voas2" path="res://static_wall.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cqurmahm50fml" path="res://seeker_enemy.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://gwk0doh78ncu" path="res://seeker_spawner.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
 
@@ -47,11 +47,8 @@ rotation = 1.57199
 position = Vector2(2200, -584)
 rotation = 1.5713
 
-[node name="SeekerEnemy" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(-167, 252)
+[node name="SeekerSpawner" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(1499, 852)
 
-[node name="SeekerEnemy2" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(265, 816)
-
-[node name="SeekerEnemy3" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(662, 66)
+[node name="SeekerSpawner2" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(1440, 621)
