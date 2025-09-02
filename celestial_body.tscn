@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://7stbb8vwkrg6"]
 
-[ext_resource type="Script" uid="uid://5mtyt4e3cs54" path="res://celestial_body.gd" id="1_pbhp0"]
+[ext_resource type="Script" uid="uid://bm7qkui8mdpdj" path="res://celestial_body.gd" id="1_pbhp0"]
 [ext_resource type="Script" uid="uid://bv05yvc5vycgx" path="res://visuals.gd" id="1_vuvvy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pbhp0"]

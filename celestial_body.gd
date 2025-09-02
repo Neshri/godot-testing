@@ -9,6 +9,8 @@ signal died(body)
 @export_group("Physics")
 @export var gravity_enabled: bool = true
 @export var max_speed: float = 1200.0
+#@export_group("Visuals")
+#@export var 
 @export_group("Health & Damage")
 @export var health: float = 100.0
 @export var damage_threshold_mass_factor: float = 1.0

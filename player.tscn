@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://delfo4sj40jv5"]
 
-[ext_resource type="Script" uid="uid://dcmpnaf8dpw80" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://7qfh103mo8kj" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://bv05yvc5vycgx" path="res://visuals.gd" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://bkjnlcfelj50e" path="res://swinging_mass_belt.tscn" id="3_i3pqv"]
 

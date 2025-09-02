@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://c3wc5oxr7cbec"]
 
-[ext_resource type="Script" uid="uid://bktmiogxm458l" path="res://orbital_belt.gd" id="1_i5jyk"]
-[ext_resource type="Script" uid="uid://cqitunurms1dd" path="res://spring_parameters.gd" id="2_8qjo1"]
+[ext_resource type="Script" uid="uid://p1tapomgtuah" path="res://orbital_belt.gd" id="1_i5jyk"]
+[ext_resource type="Script" uid="uid://6pjmmjlad5s7" path="res://spring_parameters.gd" id="2_8qjo1"]
 [ext_resource type="Script" uid="uid://c0a72t5yyyat1" path="res://orbital_layer.gd" id="2_f0x1a"]
 [ext_resource type="PackedScene" uid="uid://c4saafepeac37" path="res://orbital.tscn" id="3_2vg57"]
 

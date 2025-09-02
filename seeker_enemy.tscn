@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqurmahm50fml"]
 
 [ext_resource type="PackedScene" uid="uid://7stbb8vwkrg6" path="res://celestial_body.tscn" id="1_04wi5"]
-[ext_resource type="Script" uid="uid://cchibugmp202j" path="res://seeker_enemy.gd" id="2_unis6"]
+[ext_resource type="Script" uid="uid://cwr7tffsaaabe" path="res://seeker_enemy.gd" id="2_unis6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_unis6"]
 radius = 593.008
